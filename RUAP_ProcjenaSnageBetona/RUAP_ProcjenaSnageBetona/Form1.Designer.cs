@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1_Cement = new System.Windows.Forms.Label();
             this.label2_BlastFurnaceSlag = new System.Windows.Forms.Label();
             this.textBox1_Cement = new System.Windows.Forms.TextBox();
@@ -225,16 +225,17 @@
             // 
             // chartGraphic
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartGraphic.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartGraphic.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chartGraphic.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartGraphic.Legends.Add(legend2);
             this.chartGraphic.Location = new System.Drawing.Point(405, 80);
             this.chartGraphic.Name = "chartGraphic";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartGraphic.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartGraphic.Series.Add(series2);
             this.chartGraphic.Size = new System.Drawing.Size(496, 406);
             this.chartGraphic.TabIndex = 19;
             this.chartGraphic.Text = "chart1";
@@ -265,7 +266,7 @@
             this.Controls.Add(this.label2_BlastFurnaceSlag);
             this.Controls.Add(this.label1_Cement);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Concrete compressive strength assessment";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartGraphic)).EndInit();
             this.ResumeLayout(false);

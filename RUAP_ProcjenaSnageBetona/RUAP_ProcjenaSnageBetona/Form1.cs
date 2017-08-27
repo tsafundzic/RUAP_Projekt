@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Globalization;
+using System.Windows.Forms.DataVisualization.Charting;
 
 
 
@@ -19,7 +20,7 @@ namespace RUAP_ProcjenaSnageBetona
    
     public partial class Form1 : Form
     {
-        string res;
+        
         public Form1()
         {
             InitializeComponent();
@@ -47,17 +48,7 @@ namespace RUAP_ProcjenaSnageBetona
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
                 client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/df0b4927a7ee46f1b3ff308a9779338a/services/f2c6c80c447d4a78ac19747f8c7cf50b/execute?api-version=2.0&details=true");
-
-                // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
-                // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.
-                // For instance, replace code such as:
-                //      result = await DoSomeTask()
-                // with the following:
-                //      result = await DoSomeTask().ConfigureAwait(false)
-
-
                 HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest).ConfigureAwait(false);
-
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
@@ -96,20 +87,36 @@ namespace RUAP_ProcjenaSnageBetona
             string[] res = InvokeRequestResponseService(inputValue).Result;
             string rez = res[31];
             double rezultat = Double.Parse(rez.Substring(1, rez.Length - 8), CultureInfo.InvariantCulture);
-            return rezultat;
+            if (rezultat < 0)
+            {
+                return 0;
+            }else return rezultat;
         }
         private void graph() {
             chartGraphic.Series[0].Points.Clear(); 
             chartGraphic.ChartAreas[0].CursorX.IsUserEnabled = true;
             chartGraphic.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             chartGraphic.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chartGraphic.ChartAreas[0].AxisX.IsMarginVisible = false;
+            chartGraphic.ChartAreas[0].AxisX.Title = "Age [Day]";
+            chartGraphic.ChartAreas[0].AxisY.Title = "Concrete compressive strength [MPa]";
+            
             int x = int.Parse(textBox8_Day.Text);
             int i;
-            for (i = x ; i< x + 1000; i+=100)
+            for (i = 0 ; i<= 10*x; i+=10)
             {
+                if (i > 365) break;
                 chartGraphic.Series[0].Points.AddXY(i, function(i));
             }
             chartGraphic.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chartGraphic.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            StripLine stripLine = new StripLine();
+            stripLine.Interval = 0; // only show 1 line
+            stripLine.IntervalOffset = x; // start it at x=0
+            stripLine.StripWidth = 1; // the width is 1
+            stripLine.BackColor = Color.Red;
+            chartGraphic.ChartAreas[0].AxisX.StripLines.Add(stripLine);
+            
 
         }
 
@@ -120,10 +127,17 @@ namespace RUAP_ProcjenaSnageBetona
             double test;
             int daytest;
             if (!double.TryParse(textBox1_Cement.Text, out test) || !double.TryParse(textBox2_BlastFurnaceSlag.Text, out test) || !double.TryParse(textBox3_FlyAsh.Text, out test) || !double.TryParse(textBox4_Water.Text, out test) || !double.TryParse(textBox5_Superplasticizer.Text, out test) || !double.TryParse(textBox6_CoarseAggregate.Text, out test) || !double.TryParse(textBox7_FineAggregate.Text, out test) || !int.TryParse(textBox7_FineAggregate.Text, out daytest))
-            {
+            {   
+  
                 MessageBox.Show("You must enter numbers!");
                 return;
             }
+            else if (int.Parse(textBox8_Day.Text) > 365 || int.Parse(textBox8_Day.Text) <0)
+            {
+                MessageBox.Show("Out of range");
+                return;
+            }
+
             StringTable inputValue = new StringTable()
             {
                 ColumnNames = new string[] { "Cement (component 1)(kg in a m^3 mixture)", "Blast Furnace Slag (component 2)(kg in a m^3 mixture)", "Fly Ash (component 3)(kg in a m^3 mixture)", "Water  (component 4)(kg in a m^3 mixture)", "Superplasticizer (component 5)(kg in a m^3 mixture)", "Coarse Aggregate  (component 6)(kg in a m^3 mixture)", "Fine Aggregate (component 7)(kg in a m^3 mixture)", "Age (day)", "Concrete compressive strength(MPa, megapascals)" },

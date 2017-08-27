@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3DED73E6-EEE0-49DD-A7E5-64E81935E657}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RUAP_ProcjenaSnageBetona</RootNamespace>
     <AssemblyName>RUAP_ProcjenaSnageBetona</AssemblyName>

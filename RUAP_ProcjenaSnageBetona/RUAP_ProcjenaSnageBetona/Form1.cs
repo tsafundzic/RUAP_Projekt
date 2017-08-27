@@ -88,6 +88,13 @@ namespace RUAP_ProcjenaSnageBetona
 
         private void button_calculate_Click_1(object sender, EventArgs e)
         {
+            double test;
+            int daytest;
+            if (!double.TryParse(textBox1_Cement.Text, out test) || !double.TryParse(textBox2_BlastFurnaceSlag.Text, out test) || !double.TryParse(textBox3_FlyAsh.Text, out test) || !double.TryParse(textBox4_Water.Text, out test) || !double.TryParse(textBox5_Superplasticizer.Text, out test) || !double.TryParse(textBox6_CoarseAggregate.Text, out test) || !double.TryParse(textBox7_FineAggregate.Text, out test) || !int.TryParse(textBox7_FineAggregate.Text, out daytest))
+            {
+                MessageBox.Show("You must enter numbers!");
+                return;
+            }
             StringTable inputValue = new StringTable()
             {
                 ColumnNames = new string[] { "Cement (component 1)(kg in a m^3 mixture)", "Blast Furnace Slag (component 2)(kg in a m^3 mixture)", "Fly Ash (component 3)(kg in a m^3 mixture)", "Water  (component 4)(kg in a m^3 mixture)", "Superplasticizer (component 5)(kg in a m^3 mixture)", "Coarse Aggregate  (component 6)(kg in a m^3 mixture)", "Fine Aggregate (component 7)(kg in a m^3 mixture)", "Age (day)", "Concrete compressive strength(MPa, megapascals)" },
@@ -99,12 +106,18 @@ namespace RUAP_ProcjenaSnageBetona
             double rezultat = Double.Parse(rez.Substring(1, rez.Length - 8),CultureInfo.InvariantCulture);
             if (rezultat < 0)
             {
-                
+                MessageBox.Show("Check the entered data, there is an error");
+                return;
             }
             else
             {
                 label_result.Text = String.Format("{0:0.00}", rezultat);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
     public class StringTable

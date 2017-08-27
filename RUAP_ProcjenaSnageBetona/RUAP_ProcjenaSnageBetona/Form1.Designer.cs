@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1_Cement = new System.Windows.Forms.Label();
             this.label2_BlastFurnaceSlag = new System.Windows.Forms.Label();
             this.textBox1_Cement = new System.Windows.Forms.TextBox();
@@ -47,13 +50,15 @@
             this.label_Concretecompressivestrength = new System.Windows.Forms.Label();
             this.label_result = new System.Windows.Forms.Label();
             this.button_calculate = new System.Windows.Forms.Button();
+            this.chartGraphic = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGraphic)).BeginInit();
             this.SuspendLayout();
             // 
             // label1_Cement
             // 
             this.label1_Cement.AutoSize = true;
             this.label1_Cement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label1_Cement.Location = new System.Drawing.Point(355, 88);
+            this.label1_Cement.Location = new System.Drawing.Point(111, 81);
             this.label1_Cement.Name = "label1_Cement";
             this.label1_Cement.Size = new System.Drawing.Size(99, 15);
             this.label1_Cement.TabIndex = 0;
@@ -63,7 +68,7 @@
             // 
             this.label2_BlastFurnaceSlag.AutoSize = true;
             this.label2_BlastFurnaceSlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label2_BlastFurnaceSlag.Location = new System.Drawing.Point(295, 114);
+            this.label2_BlastFurnaceSlag.Location = new System.Drawing.Point(51, 107);
             this.label2_BlastFurnaceSlag.Name = "label2_BlastFurnaceSlag";
             this.label2_BlastFurnaceSlag.Size = new System.Drawing.Size(159, 15);
             this.label2_BlastFurnaceSlag.TabIndex = 1;
@@ -71,21 +76,21 @@
             // 
             // textBox1_Cement
             // 
-            this.textBox1_Cement.Location = new System.Drawing.Point(470, 87);
+            this.textBox1_Cement.Location = new System.Drawing.Point(226, 80);
             this.textBox1_Cement.Name = "textBox1_Cement";
             this.textBox1_Cement.Size = new System.Drawing.Size(100, 20);
             this.textBox1_Cement.TabIndex = 2;
             // 
             // textBox2_BlastFurnaceSlag
             // 
-            this.textBox2_BlastFurnaceSlag.Location = new System.Drawing.Point(470, 113);
+            this.textBox2_BlastFurnaceSlag.Location = new System.Drawing.Point(226, 106);
             this.textBox2_BlastFurnaceSlag.Name = "textBox2_BlastFurnaceSlag";
             this.textBox2_BlastFurnaceSlag.Size = new System.Drawing.Size(100, 20);
             this.textBox2_BlastFurnaceSlag.TabIndex = 3;
             // 
             // textBox3_FlyAsh
             // 
-            this.textBox3_FlyAsh.Location = new System.Drawing.Point(470, 139);
+            this.textBox3_FlyAsh.Location = new System.Drawing.Point(226, 132);
             this.textBox3_FlyAsh.Name = "textBox3_FlyAsh";
             this.textBox3_FlyAsh.Size = new System.Drawing.Size(100, 20);
             this.textBox3_FlyAsh.TabIndex = 5;
@@ -94,7 +99,7 @@
             // 
             this.label3_FlyAsh.AutoSize = true;
             this.label3_FlyAsh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label3_FlyAsh.Location = new System.Drawing.Point(360, 140);
+            this.label3_FlyAsh.Location = new System.Drawing.Point(116, 133);
             this.label3_FlyAsh.Name = "label3_FlyAsh";
             this.label3_FlyAsh.Size = new System.Drawing.Size(94, 15);
             this.label3_FlyAsh.TabIndex = 4;
@@ -102,7 +107,7 @@
             // 
             // textBox4_Water
             // 
-            this.textBox4_Water.Location = new System.Drawing.Point(470, 165);
+            this.textBox4_Water.Location = new System.Drawing.Point(226, 158);
             this.textBox4_Water.Name = "textBox4_Water";
             this.textBox4_Water.Size = new System.Drawing.Size(100, 20);
             this.textBox4_Water.TabIndex = 7;
@@ -111,7 +116,7 @@
             // 
             this.label4_Water.AutoSize = true;
             this.label4_Water.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label4_Water.Location = new System.Drawing.Point(363, 166);
+            this.label4_Water.Location = new System.Drawing.Point(119, 159);
             this.label4_Water.Name = "label4_Water";
             this.label4_Water.Size = new System.Drawing.Size(91, 15);
             this.label4_Water.TabIndex = 6;
@@ -119,7 +124,7 @@
             // 
             // textBox5_Superplasticizer
             // 
-            this.textBox5_Superplasticizer.Location = new System.Drawing.Point(470, 191);
+            this.textBox5_Superplasticizer.Location = new System.Drawing.Point(226, 184);
             this.textBox5_Superplasticizer.Name = "textBox5_Superplasticizer";
             this.textBox5_Superplasticizer.Size = new System.Drawing.Size(100, 20);
             this.textBox5_Superplasticizer.TabIndex = 9;
@@ -128,7 +133,7 @@
             // 
             this.label5_Superplasticizer.AutoSize = true;
             this.label5_Superplasticizer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label5_Superplasticizer.Location = new System.Drawing.Point(310, 192);
+            this.label5_Superplasticizer.Location = new System.Drawing.Point(66, 185);
             this.label5_Superplasticizer.Name = "label5_Superplasticizer";
             this.label5_Superplasticizer.Size = new System.Drawing.Size(144, 15);
             this.label5_Superplasticizer.TabIndex = 8;
@@ -136,7 +141,7 @@
             // 
             // textBox6_CoarseAggregate
             // 
-            this.textBox6_CoarseAggregate.Location = new System.Drawing.Point(470, 217);
+            this.textBox6_CoarseAggregate.Location = new System.Drawing.Point(226, 210);
             this.textBox6_CoarseAggregate.Name = "textBox6_CoarseAggregate";
             this.textBox6_CoarseAggregate.Size = new System.Drawing.Size(100, 20);
             this.textBox6_CoarseAggregate.TabIndex = 11;
@@ -145,7 +150,7 @@
             // 
             this.label6_CoarseAggregate.AutoSize = true;
             this.label6_CoarseAggregate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label6_CoarseAggregate.Location = new System.Drawing.Point(300, 218);
+            this.label6_CoarseAggregate.Location = new System.Drawing.Point(56, 211);
             this.label6_CoarseAggregate.Name = "label6_CoarseAggregate";
             this.label6_CoarseAggregate.Size = new System.Drawing.Size(154, 15);
             this.label6_CoarseAggregate.TabIndex = 10;
@@ -153,7 +158,7 @@
             // 
             // textBox7_FineAggregate
             // 
-            this.textBox7_FineAggregate.Location = new System.Drawing.Point(470, 243);
+            this.textBox7_FineAggregate.Location = new System.Drawing.Point(226, 236);
             this.textBox7_FineAggregate.Name = "textBox7_FineAggregate";
             this.textBox7_FineAggregate.Size = new System.Drawing.Size(100, 20);
             this.textBox7_FineAggregate.TabIndex = 13;
@@ -162,7 +167,7 @@
             // 
             this.label7_FineAggregate.AutoSize = true;
             this.label7_FineAggregate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label7_FineAggregate.Location = new System.Drawing.Point(315, 244);
+            this.label7_FineAggregate.Location = new System.Drawing.Point(71, 237);
             this.label7_FineAggregate.Name = "label7_FineAggregate";
             this.label7_FineAggregate.Size = new System.Drawing.Size(139, 15);
             this.label7_FineAggregate.TabIndex = 12;
@@ -170,7 +175,7 @@
             // 
             // textBox8_Day
             // 
-            this.textBox8_Day.Location = new System.Drawing.Point(470, 269);
+            this.textBox8_Day.Location = new System.Drawing.Point(226, 262);
             this.textBox8_Day.Name = "textBox8_Day";
             this.textBox8_Day.Size = new System.Drawing.Size(100, 20);
             this.textBox8_Day.TabIndex = 15;
@@ -179,7 +184,7 @@
             // 
             this.label8_Day.AutoSize = true;
             this.label8_Day.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label8_Day.Location = new System.Drawing.Point(398, 270);
+            this.label8_Day.Location = new System.Drawing.Point(154, 263);
             this.label8_Day.Name = "label8_Day";
             this.label8_Day.Size = new System.Drawing.Size(56, 15);
             this.label8_Day.TabIndex = 14;
@@ -189,7 +194,7 @@
             // 
             this.label_Concretecompressivestrength.AutoSize = true;
             this.label_Concretecompressivestrength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label_Concretecompressivestrength.Location = new System.Drawing.Point(366, 413);
+            this.label_Concretecompressivestrength.Location = new System.Drawing.Point(122, 406);
             this.label_Concretecompressivestrength.Name = "label_Concretecompressivestrength";
             this.label_Concretecompressivestrength.Size = new System.Drawing.Size(209, 15);
             this.label_Concretecompressivestrength.TabIndex = 16;
@@ -200,7 +205,7 @@
             this.label_result.AutoSize = true;
             this.label_result.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label_result.Location = new System.Drawing.Point(413, 440);
+            this.label_result.Location = new System.Drawing.Point(169, 433);
             this.label_result.Name = "label_result";
             this.label_result.Size = new System.Drawing.Size(97, 46);
             this.label_result.TabIndex = 17;
@@ -210,7 +215,7 @@
             // button_calculate
             // 
             this.button_calculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.button_calculate.Location = new System.Drawing.Point(421, 333);
+            this.button_calculate.Location = new System.Drawing.Point(177, 326);
             this.button_calculate.Name = "button_calculate";
             this.button_calculate.Size = new System.Drawing.Size(96, 39);
             this.button_calculate.TabIndex = 18;
@@ -218,11 +223,28 @@
             this.button_calculate.UseVisualStyleBackColor = true;
             this.button_calculate.Click += new System.EventHandler(this.button_calculate_Click_1);
             // 
+            // chartGraphic
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartGraphic.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartGraphic.Legends.Add(legend1);
+            this.chartGraphic.Location = new System.Drawing.Point(405, 80);
+            this.chartGraphic.Name = "chartGraphic";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartGraphic.Series.Add(series1);
+            this.chartGraphic.Size = new System.Drawing.Size(496, 406);
+            this.chartGraphic.TabIndex = 19;
+            this.chartGraphic.Text = "chart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 592);
+            this.Controls.Add(this.chartGraphic);
             this.Controls.Add(this.button_calculate);
             this.Controls.Add(this.label_result);
             this.Controls.Add(this.label_Concretecompressivestrength);
@@ -245,6 +267,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.chartGraphic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,6 +294,7 @@
         private System.Windows.Forms.Label label_Concretecompressivestrength;
         private System.Windows.Forms.Label label_result;
         private System.Windows.Forms.Button button_calculate;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGraphic;
     }
 }
 

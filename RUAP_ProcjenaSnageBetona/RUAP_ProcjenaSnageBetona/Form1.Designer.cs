@@ -205,6 +205,7 @@
             this.label_result.Size = new System.Drawing.Size(97, 46);
             this.label_result.TabIndex = 17;
             this.label_result.Text = "0.00";
+            this.label_result.Click += new System.EventHandler(this.label_result_Click);
             // 
             // button_calculate
             // 
@@ -215,6 +216,7 @@
             this.button_calculate.TabIndex = 18;
             this.button_calculate.Text = "Calculate";
             this.button_calculate.UseVisualStyleBackColor = true;
+            this.button_calculate.Click += new System.EventHandler(this.button_calculate_Click_1);
             // 
             // Form1
             // 
